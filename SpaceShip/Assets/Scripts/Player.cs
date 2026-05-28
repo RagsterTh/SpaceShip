@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public float _speed = 5f;
     private Vector2 _movement;
     private Rigidbody2D _rb;
+    public GameObject bullet;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,5 +18,11 @@ public class Player : MonoBehaviour
         _movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         //Aplica na velocidade do RigidBody o vetor de botão multiplicando pela velocidade
         _rb.linearVelocity = _movement * _speed;
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(bullet, transform.position, transform.rotation);
+        }
+
     }
 }
